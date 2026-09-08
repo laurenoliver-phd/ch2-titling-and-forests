@@ -1,0 +1,14 @@
+# R / RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# macOS
+.DS_Store
+
+# Raw data
+data/raw_data/
+
+# Generated outputs
+figures/
