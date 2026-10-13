@@ -2,21 +2,8 @@ library(dplyr)
 library(tidyr)
 library(ggtext)
 library(fixest)
-library(vtable)
-library(modelsummary)
-library(broom)
-library(stringr)
-library(stringi)
-library(xtable)
-library(lubridate)
-library(haven)
-library(readxl)
-library(ggplot2)
-library(lme4)
-library(performance)
 library(purrr)
 library(tibble)
-library(sandwich)
 library(lmtest)
 library(sf)
 library(mapview)
@@ -33,7 +20,8 @@ benin_plots <- st_read(
   "data/raw_data/benin_plots_raw/Benin_plots_raw.shp"
 )
 
-# Loading in just the parcels from the scrape that had titles to simplify the join
+# Loading in just the parcels from the scrapes that have titles to simplify the join
+# Note: As of 9/21/26 the following file includes data from both the treatment AND control villages
 
 load("~/chapter-2/data/processed/2_cadastre_scrape_titled.RData")
 
@@ -42,14 +30,11 @@ load("~/chapter-2/data/processed/2_cadastre_scrape_titled.RData")
 st_crs(has_nup) #WGS 84 / UTM zone 31N
 st_crs(benin_plots) #WGS 84 / UTM zone 31N
 
-st_crs(has_nup) == st_crs(benin_plots) #TRUE
+st_crs(has_nup) == st_crs(benin_plots) #TRUE 
 
 # Diagnostic Test for Matches
 
 matches <- st_intersects(has_nup, benin_plots)
-
-st_bbox(has_nup)
-st_bbox(benin_plots)
 
 
 # Creating zoomable map to see overlap between scraped parcels and PFR parcels
@@ -79,6 +64,9 @@ st_write(
   driver = "GeoJSON",
   delete_dsn = TRUE
 )
+
+
+
 
 
 

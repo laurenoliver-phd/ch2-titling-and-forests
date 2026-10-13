@@ -377,7 +377,7 @@ grid_points_in_poly <- function(
 # FULL RUN
 # ------------------------------------------------------------
 
-villages <- control_voronoi_villages[29:85,]
+villages <- control_voronoi_villages[191:267,]
 
 
 # ------------------------------------------------------------
@@ -879,73 +879,7 @@ for (i in seq_len(nrow(villages))) {
 }
 
 
-
-### VID1 =  291 - no parcel geometries returned
-### VID1 =  292 - no parcel geometries returned
-### VID1 =  293 - no parcel geometries returned
-### VID1 =  294 - no parcel geometries returned
-### VID1 =  295 - 7 parcels
-### VID1 =  296 - no parcel geometries returned
-### VID1 =  298 - no parcel geometries returned
-### VID1 =  299 - no parcel geometries returned
-### VID1 =  300 - 1 parcel
-### VID1 =  301 - 5 parcels
-### VID1 =  302 - 16 parcels
-### VID1 =  303 - 3 parcels
-### VID1 =  304 - 6 parcels
-### VID1 =  305 - 19 parcels
-### VID1 =  306 - 48 parcels
-### VID1 =  307 - no parcel geometries returned
-### VID1 =  308 - no parcel geometries returned
-### VID1 =  309 - no parcel geometries returned
-### VID1 =  310 - no parcel geometries returned
-### VID1 =  311 - 1 parcel
-### VID1 =  312 - no parcel geometries returned
-### VID1 =  313 - no parcel geometries returned
-### VID1 =  314 - 8 parcels
-### VID1 =  315 - 36 parcels
-### VID1 =  316 - no parcel geometries returned
-### VID1 =  317 - no parcel geometries returned
-### VID1 =  318 - 17 parcels
+## Next step: Bind all parcels together and add to the treated village parcels -- for this step, see:
+# scripts/2_importing_scrape.R
 
 
-
-# ============================================================
-# COMBINE ALL COMPLETED VILLAGES
-# ============================================================
-
-all_list_complete <- compact(
-  all_list
-)
-
-
-if (length(all_list_complete) > 0) {
-  
-  all_parcels <- do.call(
-    rbind,
-    all_list_complete
-  )
-  
-  
-  message(
-    "\n========================================"
-  )
-  
-  message(
-    "Finished."
-  )
-  
-  message(
-    nrow(all_parcels),
-    " total parcel records loaded."
-  )
-  
-  
-} else {
-  
-  all_parcels <- NULL
-  
-  message(
-    "\nNo parcel records were collected."
-  )
-}
